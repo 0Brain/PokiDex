@@ -3,6 +3,7 @@ package com.prasan.pokiapp
 
 import android.app.Application
 import android.content.Context
+import com.facebook.stetho.Stetho
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -16,7 +17,6 @@ class PokiApplication : Application(){
  override fun onCreate() {
   super.onCreate()
   PokiApplication.context = applicationContext;
+  Stetho.initializeWithDefaults(this);
  }
-
-
 }

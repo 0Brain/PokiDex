@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">PokiApp</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="base_stats">Base Stats</string>
+    <string name="hp">Hp</string>
+    <string name="atk">atk</string>
+    <string name="def">def</string>
+    <string name="spd">spd</string>
+    <string name="exp">exp</string>
 </resources>

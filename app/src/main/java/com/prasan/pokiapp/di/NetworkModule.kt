@@ -1,7 +1,7 @@
 package com.prasan.pokiapp.di
 
 import com.prasan.pokiapp.network.HttpRequestInterceptor
-import com.prasan.pokiapp.network.PokemonService
+import com.prasan.pokiapp.network.PokemonApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,15 +31,15 @@ object NetworkModule {
  return Retrofit
   .Builder()
   .client(okHttpClient)
-  .baseUrl("https://pokeapi.co/api/v2")
+  .baseUrl("https://pokeapi.co/api/v2/")
   .addConverterFactory(MoshiConverterFactory.create())
   .build()
  }
 
  @Singleton
  @Provides
- fun providePokemonApi(retrofit: Retrofit):PokemonService{
-  return retrofit.create(PokemonService::class.java)
+ fun providePokemonApi(retrofit: Retrofit):PokemonApi{
+  return retrofit.create(PokemonApi::class.java)
  }
 
 // @Singleton

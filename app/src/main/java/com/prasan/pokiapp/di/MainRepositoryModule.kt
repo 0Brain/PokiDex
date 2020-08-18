@@ -1,25 +1,26 @@
 package com.prasan.pokiapp.di
 
-import com.prasan.pokiapp.network.PokemonService
-import com.prasan.pokiapp.persistance.PokemonDao
-import com.prasan.pokiapp.repostory.MainRepository
+import com.prasan.pokiapp.network.PokemonApi
+import com.prasan.pokiapp.persistance.local.pokemon.PokemonDao
+import com.prasan.pokiapp.persistance.local.pokemon.PokemonRepositoryImpl
+import com.prasan.pokiapp.repostory.PokemonRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 
 @Module
-@InstallIn(ActivityRetainedComponent::class)
+@InstallIn(ApplicationComponent::class)
 object MainRepositoryModule {
 
  @Provides
- @ActivityRetainedScoped
+ @Singleton
  fun provideMainRepository(
-  pokemonApi: PokemonService,
-  pokemonDao: PokemonDao
- ): MainRepository {
-  return MainRepository(pokemonApi, pokemonDao)
+     pokemonApi: PokemonApi,
+     pokemonDao: PokemonDao
+ ): PokemonRepository {
+  return PokemonRepositoryImpl(pokemonDao,pokemonApi)
  }
 }

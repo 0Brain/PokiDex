@@ -2,10 +2,9 @@ package com.prasan.pokiapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.prasan.pokiapp.commons.BasePokemonDao
-import com.prasan.pokiapp.persistance.PokemonDao
+import com.prasan.pokiapp.persistance.local.pokemon.PokemonDao
 import com.prasan.pokiapp.persistance.PokemonDatabase
-import com.prasan.pokiapp.persistance.PokemonInfoDao
+import com.prasan.pokiapp.persistance.local.pokemonInfo.PokemonInfoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,13 +26,13 @@ object DatabaseModule {
 
  @Singleton
  @Provides
- fun providePokemonDao(pokemonDatabase: PokemonDatabase):PokemonDao{
+ fun providePokemonDao(pokemonDatabase: PokemonDatabase): PokemonDao {
   return pokemonDatabase.pokemonDao()
  }
 
  @Singleton
  @Provides
- fun providePokemon(pokemonDatabase: PokemonDatabase):PokemonInfoDao{
+ fun providePokemon(pokemonDatabase: PokemonDatabase): PokemonInfoDao {
   return pokemonDatabase.pokemonInfoDao()
  }
 

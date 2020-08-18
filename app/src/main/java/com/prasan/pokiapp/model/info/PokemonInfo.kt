@@ -1,4 +1,4 @@
-package com.prasan.pokiapp.model
+package com.prasan.pokiapp.model.info
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
@@ -11,11 +11,11 @@ import kotlin.random.Random
 @Entity
 @JsonClass(generateAdapter = true)
 data class PokemonInfo(
- @field:Json(name = "id") @NonNull @PrimaryKey val id:String,
- @field:Json(name = "name") val name:String,
- @field:Json(name = "height") val height:Int,
- @field:Json(name = "weight") val weight:Int,
- @field:Json(name = "types") val types:List<TypeResponse>,
+ @Json(name = "id") @NonNull @PrimaryKey val id:String,
+ @Json(name = "name") val name:String,
+ @Json(name = "height") val height:Int,
+ @Json(name = "weight") val weight:Int,
+ @Json(name = "types") val types:List<TypeResponse>,
  val hp:Int = Random.nextInt(maxHp),
  val attack:Int = Random.nextInt(maxAttack),
  val defense:Int = Random.nextInt(maxDefense),
@@ -32,20 +32,21 @@ data class PokemonInfo(
  }
 
  fun getIdString():String = String.format("#%03d",id)
- fun getWeightString():String = String.format("%.1f KG",weight)
- fun getHeightString():String = String.format("%.1f M",height)
+ fun getWeightString():String = String.format("%.1f KG",weight.toFloat()/10)
+ fun getHeightString():String = String.format("%.1f M",height.toFloat()/10)
  fun getHpString():String = "$hp/$maxHp"
  fun getAttackString():String = "$attack/$maxAttack"
  fun getDefenseString():String = "$defense/$maxDefense"
  fun getSpeedString():String = "$speed/$maxSpeed"
  fun getExpString():String = "$exp/$maxExp"
 
+ @JsonClass(generateAdapter = true)
  data class TypeResponse(
-  @field:Json(name = "slot") val slot:Int,
-  @field:Json(name = "type") val type:Type
+  @Json(name = "slot") val slot:Int,
+  @Json(name = "type") val type: Type
  )
-
+ @JsonClass(generateAdapter = true)
  data class Type(
-  @field:Json(name = "name ") val name:String
+  @Json(name = "name") val name:String
  )
 }

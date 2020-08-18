@@ -1,7 +1,7 @@
-package com.prasan.pokiapp.converters
+package com.prasan.pokiapp.persistance.converters
 
 import androidx.room.TypeConverter
-import com.prasan.pokiapp.model.PokemonInfo
+import com.prasan.pokiapp.model.info.PokemonInfo
 import com.squareup.moshi.Moshi
 
 class PokemonInfoTypeConverter {
@@ -10,13 +10,13 @@ class PokemonInfoTypeConverter {
  }
 
  @TypeConverter
- fun fromTypeToString(type:PokemonInfo.Type):String{
+ fun fromTypeToString(type: PokemonInfo.Type):String{
   val adapter = moshi.adapter(PokemonInfo.Type::class.java)
   return adapter.toJson(type)
  }
 
  @TypeConverter
- fun fromStringToType(name:String):PokemonInfo.Type?{
+ fun fromStringToType(name:String): PokemonInfo.Type?{
   val adapter = moshi.adapter(PokemonInfo.Type::class.java)
   return adapter.fromJson(name)
  }

@@ -2,8 +2,8 @@
 //
 //import android.widget.Toast
 //import com.prasan.pokiapp.PokiApplication
-//import com.prasan.pokiapp.model.PokemonInfo
-//import com.prasan.pokiapp.model.PokemonResponse
+//import com.prasan.pokiapp.model.info.PokemonInfo
+//import com.prasan.pokiapp.model.main.PokemonResponse
 //import retrofit2.Call
 //import retrofit2.Callback
 //import retrofit2.Response

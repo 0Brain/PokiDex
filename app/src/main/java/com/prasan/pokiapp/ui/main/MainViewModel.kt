@@ -1,27 +1,21 @@
 package com.prasan.pokiapp.ui.main
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.prasan.pokiapp.model.Pokemon
-import com.prasan.pokiapp.repostory.MainRepository
+import androidx.lifecycle.*
+import com.prasan.pokiapp.model.main.Pokemon
+import com.prasan.pokiapp.persistance.local.pokemon.PokemonRepositoryImpl
+import com.prasan.pokiapp.repostory.PokemonRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 
 class MainViewModel @ViewModelInject constructor(
- private val mainRepository: MainRepository
-):ViewModel() {
+    private val pokemonRepository: PokemonRepository
+) : ViewModel() {
 
-
- fun getAllPokemon(page:Int){
-  viewModelScope.launch { 
-    fetchPokemonList(page)
-  }
- }
-
- private suspend fun fetchPokemonList(page: Int):LiveData<List<Pokemon>>  = withContext(Dispatchers.IO){
-  return@withContext mainRepository.fetchPokemonList(page)
- }
+    fun getAllPokemon(): LiveData<List<Pokemon>> {
+        return pokemonRepository.getPokemonList()
+    }
 }

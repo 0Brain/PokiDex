@@ -1,21 +1,21 @@
 
-package com.prasan.pokiapp.model
+package com.prasan.pokiapp.model.main
 
-import android.os.Parcel
 import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Entity
 @Parcelize
+@JsonClass(generateAdapter = true)
 data class Pokemon(
- var page: Int = 0,
- @field:Json(name = "name") @NonNull @PrimaryKey val id:String,
- @field:Json(name = "url") val imageUrl:String
+ val page:Int = 0,
+ @Json(name = "name") @NonNull @PrimaryKey val id:String,
+ @Json(name = "url") val imageUrl:String
 ): Parcelable{
 
  fun getImageFromUrl():String{
